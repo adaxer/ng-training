@@ -1,0 +1,22 @@
+<div class="overlay">
+
+    <div class="under" (click)="onClick($event)">
+        <div style="width: 75px">
+            <mat-icon class="material-symbols-outlined">star</mat-icon>
+            <mat-icon class="material-symbols-outlined">star</mat-icon>
+            <mat-icon class="material-symbols-outlined">star</mat-icon>
+            <mat-icon class="material-symbols-outlined">star</mat-icon>
+            <mat-icon class="material-symbols-outlined">star</mat-icon>
+        </div>
+    </div>
+
+    <div class="crop over" [style.width.px]="starWidth" [title]="rating" (click)="onClick($event)">
+        <div style="width: 75px">
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+        </div>
+    </div>
+</div>
