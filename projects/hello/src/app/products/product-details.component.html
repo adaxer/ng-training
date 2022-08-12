@@ -1,0 +1,16 @@
+<div *ngIf="product">
+    <h2 *ngIf="product">{{product.productName}} Infos</h2>
+    <img src="{{product.imageUrl}}" style="width: 140px; float: left;"/>
+    <input [(ngModel)]="product.productName"/>
+    
+    <div>{{product.productCode}}</div> 
+    <div>{{product.releaseDate}}</div>
+    <div>{{product.price}}</div>
+    <div>{{product.starRating}}</div>
+    <textarea [(ngModel)]='description' ></textarea>
+
+</div>
+<div *ngIf="!product">
+    Produkt nicht gefunden
+</div>
+<button (click)="goBack()">Zurück</button> 
