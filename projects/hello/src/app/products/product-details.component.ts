@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './product.service';
 import { IProduct } from './IProduct';
 import { Location } from '@angular/common';
+import { LocalizedString } from '@angular/compiler';
 
 @Component({
   selector: 'app-product-details',
@@ -32,7 +33,27 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.product = this.productService.getProduct(id);
-    this._description = this.product?.description;
+    this.productService.getProduct(id).subscribe(
+      product => {
+        this.product = product;
+        this._description = this.product?.description;
+        this.state = LoadState.found;
+      },
+      error => {
+        this.state = LoadState.notfound;
+      });
+  }
+
+  state: LoadState = LoadState.loading;
+  get isLoading(): boolean {
+    return this.state == LoadState.loading;
+  }
+  get hasProduct(): boolean {
+    return this.state == LoadState.found;
+  }
+  get hasNoProduct(): boolean {
+    return this.state == LoadState.notfound;
   }
 }
+
+enum LoadState { loading, found, notfound };

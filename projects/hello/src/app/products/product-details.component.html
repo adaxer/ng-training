@@ -1,4 +1,4 @@
-<div *ngIf="product">
+<div *ngIf="product && hasProduct">
     <h2 *ngIf="product">{{product.productName}} Infos</h2>
     <img src="{{product.imageUrl}}" style="width: 140px; float: left;"/>
     <input [(ngModel)]="product.productName"/>
@@ -10,7 +10,10 @@
     <textarea [(ngModel)]='description' ></textarea>
 
 </div>
-<div *ngIf="!product">
+<div *ngIf="hasNoProduct">
     Produkt nicht gefunden
+</div>
+<div *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
 </div>
 <button (click)="goBack()">Zurück</button> 

@@ -1,5 +1,5 @@
 <h2>Produkt - Übersicht</h2>
-<table >
+<table *ngIf="products">
     <thead>
       <tr>
         <th>
@@ -28,3 +28,11 @@
       </tr>
     </tbody>
   </table>
+
+  <div *ngIf="!products">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div style="font-size: 20px; font-weight: bold;">
+    Star-Rating component mit NG Material siehe <a href="https://github.com/ERS-HCL/star-rating-angular-material">Hier</a>
+  </div>
